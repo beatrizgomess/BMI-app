@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class HeaderPageWidget extends StatelessWidget {
   HeaderPageWidget({super.key, required this.title});
   String title;
-
+  // String info;
   @override
   Widget build(BuildContext context) {
     return Container(

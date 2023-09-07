@@ -5,8 +5,26 @@ import 'package:bmi_app/pages/widget/elevated_button_widget.dart';
 import 'package:bmi_app/pages/widget/header_page_widget.dart';
 import 'package:flutter/material.dart';
 
-class PrincipalPage extends StatelessWidget {
-  const PrincipalPage({super.key});
+class PrincipalPage extends StatefulWidget {
+  PrincipalPage({super.key, required this.name});
+  String name;
+
+  @override
+  State<PrincipalPage> createState() => _PrincipalPageState();
+}
+
+class _PrincipalPageState extends State<PrincipalPage> {
+  TextEditingController ageController = TextEditingController();
+  TextEditingController weightController = TextEditingController();
+  TextEditingController heightController = TextEditingController();
+
+  @override
+  void dispose() {
+    ageController.dispose();
+    weightController.dispose();
+    heightController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +38,7 @@ class PrincipalPage extends StatelessWidget {
         child: Column(
           children: [
             HeaderPageWidget(
-              title: "Hi, Bea!",
+              title: "Hi, ${widget.name}",
             ),
             Container(
               height: MediaQuery.of(context).size.height,
@@ -49,20 +67,25 @@ class PrincipalPage extends StatelessWidget {
                       ElevatedButtonSelectGenre(
                         genre: "Man",
                       ),
-                      ElevatedButtonSelectGenre(genre: "Female")
+                      ElevatedButtonSelectGenre(
+                        genre: "Female",
+                      )
                     ],
                   ),
                   TextFormFieldComponent(
                     title: "Age",
+                    controller: ageController,
                     icon: const Icon(Icons.cake),
                   ),
                   TextFormFieldComponent(
                     title: "Weight",
                     icon: const Icon(Icons.line_weight),
+                    controller: weightController,
                   ),
                   TextFormFieldComponent(
                     title: "Height",
                     icon: const Icon(Icons.height),
+                    controller: heightController,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(20),
@@ -70,6 +93,9 @@ class PrincipalPage extends StatelessWidget {
                       textColor: Colors.white,
                       backgroundColor: Color.fromRGBO(255, 193, 125, 1),
                       title: "Calcule seu IMC",
+                      age: ageController.value.text,
+                      height: heightController.value.text,
+                      weight: weightController.value.text,
                     ),
                   )
                 ],

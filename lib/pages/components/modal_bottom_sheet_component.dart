@@ -2,10 +2,11 @@ import 'package:bmi_app/pages/principal_page.dart';
 import 'package:flutter/material.dart';
 
 class ModalBottomSheetComponent extends StatelessWidget {
-  const ModalBottomSheetComponent({
+  ModalBottomSheetComponent({
     super.key,
   });
-
+  String? name;
+  TextEditingController nameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,18 +28,37 @@ class ModalBottomSheetComponent extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               TextFormField(
+                controller: nameController,
+                autofocus: true,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20))),
               ),
               const SizedBox(height: 10),
-              TextButton.icon(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const PrincipalPage()));
-                },
-                icon: const Icon(Icons.arrow_circle_right),
-                label: const Text("Pular"),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton.icon(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => PrincipalPage(
+                                name: "Pessoa",
+                              )));
+                    },
+                    icon: const Icon(Icons.arrow_circle_right),
+                    label: const Text("Pular"),
+                  ),
+                  TextButton.icon(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => PrincipalPage(
+                                name: nameController.value.text,
+                              )));
+                    },
+                    icon: const Icon(Icons.arrow_circle_right),
+                    label: const Text("Next"),
+                  ),
+                ],
               ),
             ],
           ),

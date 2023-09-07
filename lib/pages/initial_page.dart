@@ -1,3 +1,4 @@
+import 'package:bmi_app/models/person.dart';
 import 'package:bmi_app/pages/components/alert_dialog_component.dart';
 import 'package:bmi_app/pages/components/caroussel_slider.dart';
 import 'package:bmi_app/pages/components/elevated_button_modal_bottom_sheet.dart';
@@ -5,8 +6,8 @@ import 'package:bmi_app/pages/components/modal_bottom_sheet_component.dart';
 import 'package:flutter/material.dart';
 
 class InitialPage extends StatelessWidget {
-  const InitialPage({super.key});
-// Color.fromRGBO(253, 153, 198, 1),
+  InitialPage({super.key});
+  Person person = Person();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +71,7 @@ class InitialPage extends StatelessWidget {
               height: MediaQuery.of(context).size.height / 18,
               width: MediaQuery.of(context).size.width / 2,
               child: ElevatedButtonModalBottomSheet(
-                widget: const ModalBottomSheetComponent(),
+                widget: ModalBottomSheetComponent(),
                 title: 'Iniciar',
                 textColor: Colors.black,
                 backgroundColor: Colors.white,
