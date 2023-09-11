@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class PrincipalPage extends StatefulWidget {
   PrincipalPage({super.key, required this.name});
   String name;
-
+  String? avatar;
   @override
   State<PrincipalPage> createState() => _PrincipalPageState();
 }
@@ -30,8 +30,8 @@ class _PrincipalPageState extends State<PrincipalPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(255, 193, 125, 1),
-        iconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: const Color.fromRGBO(255, 193, 125, 1),
+        iconTheme: IconThemeData(color: Color.fromARGB(255, 20, 15, 15)),
       ),
       backgroundColor: Color.fromRGBO(255, 193, 125, 1),
       body: SingleChildScrollView(
@@ -52,11 +52,17 @@ class _PrincipalPageState extends State<PrincipalPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        AvatarWidget(avatar: "assets/man.png"),
+                        AvatarWidget(
+                          avatar: "assets/man.png",
+                          height: 80,
+                        ),
                         const SizedBox(
                           width: 20,
                         ),
-                        AvatarWidget(avatar: "assets/woman.png"),
+                        AvatarWidget(
+                          avatar: "assets/woman.png",
+                          height: 80,
+                        ),
                       ],
                     ),
                   ),
@@ -66,9 +72,11 @@ class _PrincipalPageState extends State<PrincipalPage> {
                     children: [
                       ElevatedButtonSelectGenre(
                         genre: "Man",
+                        avatar: 'assets/man.png',
                       ),
                       ElevatedButtonSelectGenre(
                         genre: "Female",
+                        avatar: "assets/woman.png",
                       )
                     ],
                   ),

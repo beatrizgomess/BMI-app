@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class AvatarWidget extends StatelessWidget {
-  AvatarWidget({super.key, required this.avatar});
+  AvatarWidget({super.key, required this.avatar, required this.height});
 
   String avatar;
+  double height;
 
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      maxRadius: 80,
+      maxRadius: height,
       child: Image(image: AssetImage(avatar!)),
     );
   }

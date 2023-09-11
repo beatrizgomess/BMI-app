@@ -8,7 +8,7 @@ class HeaderPageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height / 10,
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery.of(context).size.width - 100,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: Color.fromRGBO(255, 193, 125, 1)),

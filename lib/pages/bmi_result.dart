@@ -1,5 +1,6 @@
 import 'package:bmi_app/pages/components/bar_information_component.dart';
 import 'package:bmi_app/pages/components/bmi_level_component.dart';
+import 'package:bmi_app/pages/widget/avatar_widget.dart';
 import 'package:bmi_app/pages/widget/header_page_widget.dart';
 import 'package:bmi_app/repositories/imc_repository_imp.dart';
 import 'package:flutter/material.dart';
@@ -37,8 +38,19 @@ class BMIResultPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            HeaderPageWidget(
-              title: "Resultado do seu IMC",
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Row(
+                children: [
+                  // AvatarWidget(
+                  //   avatar: "assets/woman.png",
+                  //   height: 20,
+                  // ),
+                  HeaderPageWidget(
+                    title: "Resultado do seu IMC",
+                  ),
+                ],
+              ),
             ),
             Container(
               height: MediaQuery.of(context).size.height,
@@ -115,11 +127,11 @@ class BMIResultPage extends StatelessWidget {
                             endIndent: MediaQuery.of(context).size.width / 50,
                           ),
                           SizedBox(height: 10),
-                          const Text(
-                            "Your BMI is classified as normal ",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700, fontSize: 15),
-                          )
+                          // const Text(
+                          //   "Your BMI is classified as normal ",
+                          //   style: TextStyle(
+                          //       fontWeight: FontWeight.w700, fontSize: 15),
+                          // )
                         ],
                       ),
                     ),
