@@ -1,3 +1,4 @@
+import 'package:bmi_app/models/person.dart';
 import 'package:bmi_app/pages/bmi_result.dart';
 import 'package:bmi_app/repositories/imc_repository_imp.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,7 @@ class ElevatedButtonWidget extends StatelessWidget {
       required this.weight,
       required this.height,
       required this.title,
-      // required this.info,
+      required this.name,
       required this.backgroundColor,
       required this.textColor});
 
@@ -20,10 +21,11 @@ class ElevatedButtonWidget extends StatelessWidget {
   Color backgroundColor;
   Color textColor;
   String age;
+  String name;
   String weight;
   String height;
   IMCRepositoryImp _imcRepositoryImp = IMCRepositoryImp();
-
+  late Person person;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -38,12 +40,12 @@ class ElevatedButtonWidget extends StatelessWidget {
             double heightFormat = double.parse(height);
             double result = _imcRepositoryImp.calculateIMC(
                 weightFormat.toDouble(), heightFormat.toDouble());
+            var person =
+                Person(null, name, age, weightFormat, heightFormat, result);
 
+            _imcRepositoryImp.saveInfo(person);
             return BMIResultPage(
-              age: age,
-              weight: weight,
-              height: height,
-              result: result,
+              person: person,
             );
           }),
         );

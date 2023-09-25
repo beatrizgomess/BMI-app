@@ -1,16 +1,21 @@
 import 'package:bmi_app/models/enum_genre.dart';
+import 'package:flutter/material.dart';
 
 class Person {
-  late String _name;
-  late String _age;
-  late double _weight;
-  late double _height;
-  late Genre _genre;
+  int? id = 0;
+  String _name = "";
+  String _age = "";
+  double _weight = 0.0;
+  double _height = 0.0;
 
-  Genre get genre => _genre;
+  double _imc = 0.0;
 
-  set genre(Genre value) {
-    _genre = value;
+  Person(this.id, this._name, this._age, this._weight, this._height, this._imc);
+
+  double get imc => _imc;
+
+  set imc(double value) {
+    _imc = value;
   }
 
   String get name => _name;

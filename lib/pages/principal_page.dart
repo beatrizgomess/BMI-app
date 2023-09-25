@@ -1,3 +1,4 @@
+import 'package:bmi_app/models/person.dart';
 import 'package:bmi_app/pages/components/elevated_button_genre_component.dart';
 import 'package:bmi_app/pages/components/text_form_field_component.dart';
 import 'package:bmi_app/pages/widget/avatar_widget.dart';
@@ -9,6 +10,7 @@ class PrincipalPage extends StatefulWidget {
   PrincipalPage({super.key, required this.name});
   String name;
   String? avatar;
+  Person? person;
   @override
   State<PrincipalPage> createState() => _PrincipalPageState();
 }
@@ -101,6 +103,7 @@ class _PrincipalPageState extends State<PrincipalPage> {
                       textColor: Colors.white,
                       backgroundColor: Color.fromRGBO(255, 193, 125, 1),
                       title: "Calcule seu IMC",
+                      name: widget.name,
                       age: ageController.value.text,
                       height: heightController.value.text,
                       weight: weightController.value.text,
